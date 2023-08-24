@@ -1,6 +1,7 @@
 package db
 
 import (
+	"GOLANG/db/util"
 	"context"
 	"testing"
 
@@ -10,9 +11,9 @@ import (
 
 func TestCreateAccount(t *testing.T) {
 	arg := CreateAccountParams{
-		Owner:    "Usman",
-		Balance:  999,
-		Currency: "INR",
+		Owner:    util.RandomOwner(),
+		Balance:  util.RandomMoney(),
+		Currency: util.RandomCurrency(),
 	}
 	account, err := testQueries.CreateAccount(context.Background(), arg)
 	require.NoError(t, err)
