@@ -20,5 +20,5 @@ test:
 	
 	go1.19 test -v -cover 	./...
 
-.PHONY: postgres createdb dropdb migratedown migrateup sqlc test
+.PHONY: postgres createdb dropdb migratedown migrateup sqlc test installGo19 downloadGo19
 
