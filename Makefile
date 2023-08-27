@@ -15,7 +15,7 @@ migratedown:
 
 sqlc:
 	
-	docker run --rm -v "${pwd}:/src" -w /src kjconroy/sqlc generate
+	docker run --rm -v "${CURDIR}:/src" -w /src kjconroy/sqlc generate
 
 test:
 	
