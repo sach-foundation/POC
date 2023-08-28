@@ -13,13 +13,15 @@ migrateup:
 migratedown:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
-sqlc:
-	
+sqlc:	
 	docker run --rm -v "${CURDIR}:/src" -w /src kjconroy/sqlc generate
 
-test:
-	
+server :
+	go run main.go
+test:	
+
 	go1.19 test -v -cover 	./...
 
-.PHONY: postgres createdb dropdb migratedown migrateup sqlc test installGo19 downloadGo19
+
+.PHONY: postgres createdb dropdb migratedown migrateup sqlc test installGo19 downloadGo19 server
 
