@@ -85,7 +85,7 @@ func TestListAccounts(t *testing.T) {
 	}
 
 	arg := ListAccountsParams{
-		Owner:  "USMAN",
+		// Owner:  "USMAN",
 		Limit:  5,
 		Offset: 0,
 	}
@@ -94,7 +94,7 @@ func TestListAccounts(t *testing.T) {
 	accounts, err := testQueries.ListAccounts(context.Background(), arg)
 
 	require.NoError(t, err)
-	require.Len(t, accounts, 2)
+	require.Len(t, accounts, int(arg.Limit))
 
 	for _, account := range accounts {
 		require.NotEmpty(t, account)

@@ -4,7 +4,7 @@ import (
 	db "GOLANG/db/sqlc"
 
 	"github.com/gin-gonic/gin"
-	_ "github.com/lib/pq"
+	_ "github.com/lib/pq" //without this server can't start
 )
 
 //Server is serve all requests
@@ -21,6 +21,9 @@ func NewServer(store *db.Store) *Server {
 
 	//routes
 	router.POST("/accounts", server.CreateAccount)
+	router.GET("/accounts/:id", server.GetAccountById)
+	router.GET("/accounts", server.ListAccount)
+	router.PUT("/accounts/update", server.UpdateAccount)
 	server.router = router
 	return server
 
